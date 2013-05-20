@@ -1,0 +1,9 @@
+## Interface: 40300
+## Title: |cffC495DDTukui_ICD|r
+## Notes: Tracks ICDs
+## Version: 1.0.3
+## Author: Nit
+## RequiredDeps: Tukui
+
+spells.lua
+icdbars.lua
