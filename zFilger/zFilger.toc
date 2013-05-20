@@ -1,0 +1,8 @@
+## Interface: 40300
+## Title: zFilger
+## Notes: Buffs/Debuffs tracker
+## Author: mrZepp
+## Version: 1.3
+
+zFilger.xml
+
