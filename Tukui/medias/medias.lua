@@ -46,6 +46,7 @@ C["media"] = {
 	["copyicon"] = [[Interface\AddOns\Tukui\medias\textures\copy]], -- copy icon
 	["blank"] = [[Interface\AddOns\Tukui\medias\textures\blank]], -- the main texture for all borders/panels
 	["buttonhover"] = [[Interface\AddOns\Tukui\medias\textures\button_hover]],
+	["natzu"] = [[Interface\AddOns\Tukui\medias\textures\natzu.tga]],
 	
 	-- colors
 	["bordercolor"] = C.general.bordercolor or { 135/255, 27/255, 224/250 }, -- border color of tukui panels

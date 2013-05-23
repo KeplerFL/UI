@@ -16,7 +16,6 @@ C["general"] = {
 	["dxereskin"] = true,                               -- reskin dxe
 	["omenreskin"] = true,                              -- reskin omen
 	["recountreskin"] = true,                           -- reskin recount
-		["recountpos"] = true, 							-- repositioning the recount frame
 	["skadareskin"] = true,                             -- reskin skada
 	["tinydpsreskin"] = true,                           -- reskin tinydps
 	["slidetime"]  = 0.6,								-- time for sliding frames
@@ -129,7 +128,7 @@ C["datatext"] = {
 	["mastery"] = 11,                                    -- show mastery rating
 	["micromenu"] = 10,                                  -- add a micro menu thought datatext
 	["regen"] = 0,                                      -- show mana regeneration
-	["talent"] = 12,                                     -- show talent
+	["talent"] = 0,                                     -- show talent
 	["calltoarms"] = 0,                                 -- show dungeon and call to arms
 
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
@@ -142,6 +141,7 @@ C["chat"] = {
 	["enable"] = true,                                  -- blah
 	["whispersound"] = true,                            -- play a sound when receiving whisper
 	["background"] = true,
+	["classbg"] = true, 								-- background of chat depending on class-faction (left:race symbol, right: faction symbol)
 }
 
 C["nameplate"] = {

@@ -6,8 +6,38 @@ ibottom:CreatePanel("Hydra", (T.buttonsize * 12) + (T.buttonspacing * 13), 23, "
 ibottom:SetFrameLevel(2)
 ibottom:SetFrameStrata("BACKGROUND")
 
+local class
 
+if T.myclass == "DEATHKNIGHT" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\DEATHKNIGHT" 
+	elseif T.myclass == "DRUID" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\DRUID"
+	elseif T.myclass == "HUNTER" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\HUNTER"
+	elseif T.myclass == "MAGE" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\MAGE"
+	elseif T.myclass == "PALADIN" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\PALADIN"
+	elseif T.myclass == "PRIEST" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\PRIEST"
+	elseif T.myclass == "ROGUE" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\ROGUE"
+	elseif T.myclass == "SHAMAN" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\SHAMAN"
+	elseif T.myclass == "WARLOCK" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\WARLOCK"
+	elseif T.myclass == "WARRIOR" then
+		class = "Interface\\AddOns\\Tukui\\medias\\textures\\class\\WARRIOR"
+	end
 
+	ChatFrame1:AddMessage(T.myfaction)
+	
+if T.myfaction == "Alliance" then
+	faction = "Interface\\AddOns\\Tukui\\medias\\textures\\alliance" 
+elseif T.myfaction == "Horde" then
+	faction = "Interface\\AddOns\\Tukui\\medias\\textures\\horde"
+end
+		
 local TukuiBar1 = CreateFrame("Frame", "TukuiBar1", UIParent, "SecureHandlerStateTemplate")
 TukuiBar1:CreatePanel("Default", 1, 1, "BOTTOM", ibottom, "TOP", 0, 2)
 TukuiBar1:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
@@ -273,6 +303,22 @@ if C.chat.background then
 	local chatrightbg = CreateFrame("Frame", "TukuiChatBackgroundRight", TukuiInfoRight)
 	chatrightbg:CreatePanel("Transparent", T.InfoLeftRightWidth, 116, "BOTTOM", TukuiInfoRight, "TOP", 0, 2)
 	T.set_anim(TukuiChatBackgroundRight, true, 500, 0, .6)
+	
+	if C.chat.classbg == true then
+	chatrightbg:SetAlpha(.8)
+	chatrightbg:SetBackdrop({
+	  bgFile = class, 
+	  edgeFile = Blank, 
+	  tile = false, tileSize = 0, edgeSize = 3,
+	})
+	chatleftbg:SetAlpha(.8)
+	chatleftbg:SetBackdrop({
+	  bgFile = faction, 
+	  edgeFile = Blank, 
+	  tile = false, tileSize = 0, edgeSize = 3,
+	})
+	
+	end
 	
 	-- LEFT TAB PANEL
 	local tabsbgleft = CreateFrame("Frame", "TukuiTabsLeftBackground", TukuiBar1)
