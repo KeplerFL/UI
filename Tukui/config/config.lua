@@ -19,9 +19,14 @@ C["general"] = {
 	["skadareskin"] = true,                             -- reskin skada
 	["tinydpsreskin"] = true,                           -- reskin tinydps
 	["slidetime"]  = 0.6,								-- time for sliding frames
+	["bottomminimap"] = false,							-- set the tukui minimap on bottom
 }
 
 C["unitframes"] = {
+	-- layout
+	["layout"] = 3, 									-- UF layout, 1 Natzu, 2 Duffed, 3 Duffed[2]
+	["buffrows"] = 2, 
+	["debuffrows"] = 4, 
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
@@ -34,7 +39,7 @@ C["unitframes"] = {
 	["auratextscale"] = 11,                             -- the font size of buffs/debuffs timers on unitframes
 	["targetauras"] = true,                             -- enable auras on target unit frame
 	["lowThreshold"] = 20,                              -- global low threshold, for low mana warning.
-	["targetpowerpvponly"] = true,                      -- enable power text on pvp target only
+	["targetpowerpvponly"] = false,                      -- enable power text on pvp target only
 	["totdebuffs"] = false,                             -- enable tot debuffs (high reso only)
 	["showtotalhpmp"] = false,                          -- change the display of info text on player and target with XXXX/Total.
 	["showsmooth"] = true,                              -- enable smooth bar
@@ -110,13 +115,13 @@ C["cooldown"] = {
 C["datatext"] = {
 	["fps_ms"] = 4,                                     -- show fps and ms on panels
 	["system"] = 5,                                     -- show total memory and others systems infos on panels
-	["bags"] = 0,                                       -- show space used in bags on panels
+	["bags"] = 10,                                       -- show space used in bags on panels
 	["gold"] = 6,                                       -- show your current gold on panels
 	["wowtime"] = 8,                                    -- show time on panels
 	["guild"] = 1,                                      -- show number on guildmate connected on panels
 	["dur"] = 2,                                        -- show your equipment durability on panels.
 	["friends"] = 3,                                    -- show number of friends connected.
-	["dps_text"] = 9,                                   -- show a dps meter on panels
+	["dps_text"] = 12,                                   -- show a dps meter on panels
 	["hps_text"] = 0,                                   -- show a heal meter on panels
 	["power"] = 7,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
 	["haste"] = 0,                                      -- show your haste rating on panels.
@@ -126,10 +131,10 @@ C["datatext"] = {
 	["currency"] = 0,                                   -- show your tracked currency on panels
 	["hit"] = 0,                                        -- show hit rating
 	["mastery"] = 11,                                    -- show mastery rating
-	["micromenu"] = 10,                                  -- add a micro menu thought datatext
+	["micromenu"] = 0,                                  -- add a micro menu thought datatext
 	["regen"] = 0,                                      -- show mana regeneration
 	["talent"] = 0,                                     -- show talent
-	["calltoarms"] = 0,                                 -- show dungeon and call to arms
+	["calltoarms"] = 9,                                 -- show dungeon and call to arms
 
 	["battleground"] = true,                            -- enable 3 stats in battleground only that replace stat1,stat2,stat3.
 	["time24"] = true,                                  -- set time to 24h format.

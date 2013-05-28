@@ -62,6 +62,7 @@
 	<Script file="modules\buffs\header.lua"/>
 	<Script file="modules\maps\minimap.lua"/>
 	<Script file="modules\panels\panels.lua"/>
+	<Script file="modules\panels\natzuPanels.lua"/>
 	<Script file="modules\datatext\armor.lua"/>
 	<Script file="modules\datatext\avoidance.lua"/>
 	<Script file="modules\datatext\bags.lua"/>
@@ -118,6 +119,8 @@
 	<Include file="modules\unitframes\templates\tankassist.xml"/>
 	<Script file="modules\unitframes\tags\tags.lua"/>
 	<Script file="modules\unitframes\layouts\tukui.lua"/>
+	<Script file="modules\unitframes\layouts\natzu.lua"/>
+	<Script file="modules\unitframes\layouts\natzu2.lua"/>
 	<Script file="modules\misc\altpowerbar.lua"/>
 	<Script file="modules\misc\threatbar.lua"/>
 	<Script file="modules\misc\combo.lua"/>
@@ -192,6 +195,8 @@
 	<Script file="modules\skins\addons\dbm.lua"/>
 	<Script file="modules\skins\addons\dxe.lua"/>
 	<Script file="modules\extras\hunter.lua"/>
+	<Script file="modules\extras\desc.lua"/>
+	<Script file="modules\extras\menu.lua"/>
 	
 	<Script file="developer\test.lua"/>	
 </Ui>

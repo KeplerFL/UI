@@ -5,7 +5,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 
 if C["datatext"].bags and C["datatext"].bags > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatBags")
-	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
 	Stat.Option = C.datatext.bags
@@ -29,5 +28,5 @@ if C["datatext"].bags and C["datatext"].bags > 0 then
 	Stat:RegisterEvent("PLAYER_LOGIN")
 	Stat:RegisterEvent("BAG_UPDATE")
 	Stat:SetScript("OnEvent", OnEvent)
-	Stat:SetScript("OnMouseDown", function() OpenAllBags() end)
+
 end

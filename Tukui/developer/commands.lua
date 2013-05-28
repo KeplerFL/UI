@@ -75,6 +75,30 @@ TestUI = function(msg)
                 end
             end
         end
+	else
+		-- arena test
+		TukuiArena1:Show(); TukuiArena1.Hide = function() end; TukuiArena1.unit = "player"
+        TukuiArena2:Show(); TukuiArena2.Hide = function() end; TukuiArena2.unit = "player"
+        TukuiArena3:Show(); TukuiArena3.Hide = function() end; TukuiArena3.unit = "player"
+		--boss test
+		TukuiBoss1:Show(); TukuiBoss1.Hide = function() end; TukuiBoss1.unit = "player"
+        TukuiBoss2:Show(); TukuiBoss2.Hide = function() end; TukuiBoss2.unit = "player"
+        TukuiBoss3:Show(); TukuiBoss3.Hide = function() end; TukuiBoss3.unit = "player"
+		--pet test
+		TukuiPet:Show(); TukuiPet.Hide = function() end; TukuiPet.unit = "player"
+		-- buffs test
+		UnitAura = function()
+            -- name, rank, texture, count, dtype, duration, timeLeft, caster
+            return 139, 'Rank 1', 'Interface\\Icons\\Spell_Holy_Penance', 1, 'Magic', 0, 0, "player"
+        end
+		
+        if(oUF) then
+            for i, v in pairs(oUF.units) do
+                if(v.UNIT_AURA) then
+                    v:UNIT_AURA("UNIT_AURA", v.unit)
+                end
+            end
+        end
     end
 end
 SlashCmdList.TestUI = TestUI

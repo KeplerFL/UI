@@ -1,7 +1,6 @@
 local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 if C["chat"].enable ~= true then return end
 
--- animation function end
 -----------------------------------------------------------------------
 -- SETUP TUKUI CHATS
 -----------------------------------------------------------------------
@@ -81,16 +80,19 @@ local function SetChatStyle(frame)
 	_G[chat.."TabText"].SetTextColor = function() return end
 	
 	-- SLIDING CHAT TEXT
-	if(id == 4) then
+	if(id == 4) and not C.general.bottomminimap then
 		T.set_anim(_G[chat], true, 500, 0, .6)
 		T.set_anim(_G[chat.."TabText"], true, 500, 0, .6)
 	else
 		T.set_anim(_G[chat], true, -500, 0, .6)
 		T.set_anim(_G[chat.."TabText"], true, -500, 0, .6)
 	end
-	
 	-- yeah baby
-	_G[chat]:SetClampRectInsets(0,0,0,0)
+	if id == 1 then
+		_G[chat]:SetParent(nil)
+		_G[chat]:SetParent(TukuiChatBackgroundLeft)
+		_G[chat]:SetClampRectInsets(0,0,0,0)
+	end
 	
 	-- Removes crap from the bottom of the chatbox so it can go to the bottom of the screen.
 	_G[chat]:SetClampedToScreen(false)
@@ -277,7 +279,7 @@ T.SetDefaultChatPosition = function(frame)
 		if id == 1 then
 			frame:ClearAllPoints()
 			frame:Point("BOTTOMLEFT", TukuiInfoLeft, "TOPLEFT", 0, 6)
-		elseif id == 4 and name == LOOT then
+		elseif id == 4 and name == LOOT and not C.general.bottomminimap then
 			if not frame.isDocked then
 				frame:ClearAllPoints()
 				frame:Point("BOTTOMRIGHT", TukuiInfoRight, "TOPRIGHT", 0, 6)

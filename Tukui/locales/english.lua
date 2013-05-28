@@ -318,3 +318,22 @@ L.install_button_skip = "Skip"
 L.install_button_continue = "Continue"
 L.install_button_finish = "Finish"
 L.install_button_close = "Close"
+
+-- natsu
+L.natsu_presentation_title = "|cff00AAFFNatzUI|r\n"
+L.natsu_presentation_text = "Complete user interface replacement for World of Warcraft, patch 4.3.4 (15595)\n\n"
+
+L.natsu_unitframes_title = "|cff00AAFFUnitframes|r\n"
+L.natsu_unitframes_text = "NatzUI UnitFrames are complete with all necessary things for PvP and PvE\nthey can be adjusted with IngameConfig, or, if you are more friendly with LUA.\nYou can try to edit-create your own layout. \nIf you'd like to share your layout you can go to \"https://github.com/KeplerFL/UI\"\n and post it there.\n\n"
+L.natsu_actionbar_title = "|cff00AAFFActionBar|r\n"
+L.natsu_actionbar_text = "NatzUI Actionbars are set to let the user choose his own preferred layout. \nYou can Show/Hide almost every actionbar and you can choose to \ndelete some of them in the ingame config menu.\n\n"
+L.natsu_custom_title = "|cff00AAFFCustom Things|r\n"
+L.natsu_custom_text = "I have implemented some custom features, like frame sliding, addon slider, \ncustom menu for fast actions and, obviusly, this frame with UI description\n"
+L.natsu_custom_text2 = "You can slide your chat frames by clicking on info bars under chats \nthey will slide out with their tabs."
+L.natsu_custom_text3 = "For the Addon Sliding effects you \nhave to know that has been implemented only for :\n-Recount \n-Skada \n-Omen\nAny other addon is not yet supported, if you like you can follow my code \nand do it from your own.\n"
+L.natsu_custom_text4 = "The small custom menu is available bly clicking on the text at the \ntop right of the left chat panel, from that menu you can hide-show mover \nTestUI frames (boss and arena with buffs) and reload your UI\n"
+L.natsu_custom_text5 = "From the text on the Top-Right corner of right chat background you can \nhide minimap and move the buffs to the Top-Right corner of the screen.\n\n"
+L.natsu_credit_title = "|cff00AAFFCredits|r\n"
+L.natsu_credit_text = "Credits for my UI:\n|cffED1111Tukz|r, |cffED1111Elv|r, All the |cff00AAFFCwww.tukui.org|r that helped me a lot and last but not least, |cffED1111Hydra|r\n with his fantastic animations and effects.\nIf I forgot someone, sorry, let me know :)"
+
+

@@ -6,14 +6,18 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 local TukuiMinimap = CreateFrame("Frame", "TukuiMinimap", UIParent)
 TukuiMinimap:CreatePanel("Default", 1, 1, "CENTER", UIParent, "CENTER", 0, 0)
 TukuiMinimap:RegisterEvent("ADDON_LOADED")
-TukuiMinimap:Point("TOPRIGHT", UIParent, "TOPRIGHT", -5, -5)
 TukuiMinimap:Size(144)
 TukuiMinimap:SetClampedToScreen(true)
 TukuiMinimap:SetMovable(true)
 TukuiMinimap.text = T.SetFontString(TukuiMinimap, C.media.uffont, 12)
 TukuiMinimap.text:SetPoint("CENTER")
 TukuiMinimap.text:SetText(L.move_minimap)
-
+if not C.general.bottomminimap then
+	TukuiMinimap:Point("TOPRIGHT", UIParent, "TOPRIGHT", -5, -5)
+else
+	TukuiMinimap:ClearAllPoints()
+	TukuiMinimap:Point("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -2, 28)
+end
 -- kill the minimap cluster
 MinimapCluster:Kill()
 

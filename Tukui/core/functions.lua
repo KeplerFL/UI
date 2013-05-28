@@ -89,19 +89,19 @@ T.PP = function(p, obj)
 	elseif p == 10 then
 		obj:SetParent(TukuiInfoTop1)
 		obj:SetHeight(TukuiInfoTop1:GetHeight())
-		obj:SetPoint("RIGHT", TukuiInfoTop1, -30, 0)
+		obj:SetPoint("CENTER", TukuiInfoTop1, 0, 0)
 		obj:SetPoint('TOP', TukuiInfoTop1)
 		obj:SetPoint('BOTTOM', TukuiInfoTop1)
 	elseif p == 11 then
 		obj:SetParent(TukuiInfoTop2)
 		obj:SetHeight(TukuiInfoTop2:GetHeight())
-		obj:SetPoint("RIGHT", TukuiInfoTop2, -30, 0)
+		obj:SetPoint("CENTER", TukuiInfoTop2, 0, 0)
 		obj:SetPoint('TOP', TukuiInfoTop2)
 		obj:SetPoint('BOTTOM', TukuiInfoTop2)
 	elseif p == 12	then
 		obj:SetParent(TukuiInfoTop3)
 		obj:SetHeight(TukuiInfoTop3:GetHeight())
-		obj:SetPoint("RIGHT", TukuiInfoTop3, -30, 0)
+		obj:SetPoint("CENTER", TukuiInfoTop3, 0, 0)
 		obj:SetPoint('TOP', TukuiInfoTop3)
 		obj:SetPoint('BOTTOM', TukuiInfoTop3)
 	end
@@ -829,12 +829,12 @@ end
 
 -- a function to move name of current target unit if enemy or friendly
 T.PostNamePosition = function(self)
+if C.unitframes.layout == 3 then
 	self.Name:ClearAllPoints()
-	if (self.Power.value:GetText() and UnitIsEnemy("player", "target") and C["unitframes"].targetpowerpvponly == true) or (self.Power.value:GetText() and C["unitframes"].targetpowerpvponly == false) then
-		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 0)
+	self.Name:SetPoint("BOTTOMRIGHT", self.Health, "TOPRIGHT", 2, 5)
 	else
-		--self.Power.value:SetAlpha(0)
-		self.Name:SetPoint("TOPLEFT", self.Health, "TOPLEFT", 2, -2)
+	self.Name:ClearAllPoints()
+	self.Name:SetPoint("TOPLEFT", self.Health, "TOPLEFT", 2, -2)
 	end
 end
 
