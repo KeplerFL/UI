@@ -832,6 +832,9 @@ T.PostNamePosition = function(self)
 if C.unitframes.layout == 3 then
 	self.Name:ClearAllPoints()
 	self.Name:SetPoint("BOTTOMRIGHT", self.Health, "TOPRIGHT", 2, 5)
+	elseif C.unitframes.layout == 4 then
+		self.Name:ClearAllPoints()
+		self.Name:SetPoint("CENTER", self.Health, "CENTER", 0, 0)
 	else
 	self.Name:ClearAllPoints()
 	self.Name:SetPoint("TOPLEFT", self.Health, "TOPLEFT", 2, -2)

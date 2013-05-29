@@ -390,6 +390,7 @@ local HideChat = function()
 			_G["ChatFrame"..i].anim_o:Play()
 			_G["ChatFrame"..i.."TabText"].anim_o:Play()
 		end
+		TukuiTooltipAnchor:SetPoint("BOTTOMRIGHT", TukuiInfoRight)
 	else
 		TukuiChatBackgroundRight.anim_o:Stop()
 		TukuiChatBackgroundLeft.anim_o:Stop()
@@ -419,6 +420,7 @@ local HideChat = function()
 			_G["ChatFrame"..i].anim:Play()
 			_G["ChatFrame"..i.."TabText"].anim:Play()
 		end
+		TukuiTooltipAnchor:SetPoint("BOTTOMRIGHT", TukuiTabsRightBackground, "TOPRIGHT", 0, -TukuiInfoRight:GetHeight())
 	end
 	
 end

@@ -237,6 +237,14 @@ local function HighlightUnit(f, r, g, b)
 	f:RegisterEvent("PLAYER_TARGET_CHANGED", HighlightTarget)
 end
 
+local function FadeIn(f)
+	UIFrameFadeIn(f, .4, f:GetAlpha(), 1)
+end
+	
+local function FadeOut(f)
+	UIFrameFadeOut(f, .8, f:GetAlpha(), 0)
+end
+
 local function StripTextures(object, kill)
 	for i=1, object:GetNumRegions() do
 		local region = select(i, object:GetRegions())
@@ -272,6 +280,8 @@ local function addapi(object)
 	if not object.Width then mt.Width = Width end
 	if not object.Height then mt.Height = Height end
 	if not object.FontString then mt.FontString = FontString end
+	if not object.FadeIn then mt.FadeIn = FadeIn end
+	if not object.FadeOut then mt.FadeOut = FadeOut end
 	if not object.HighlightUnit then mt.HighlightUnit = HighlightUnit end
 end
 

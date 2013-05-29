@@ -24,7 +24,7 @@ C["general"] = {
 
 C["unitframes"] = {
 	-- layout
-	["layout"] = 3, 									-- UF layout, 1 Natzu, 2 Duffed, 3 Duffed[2]
+	["layout"] = 4, 									-- UF layout, 1 Natzu, 2 Duffed, 3 Duffed[2]
 	["buffrows"] = 2, 
 	["debuffrows"] = 4, 
 	-- general options
@@ -183,3 +183,10 @@ C["error"] = {
 C["invite"] = { 
 	["autoaccept"] = true,                              -- auto-accept invite from guildmate and friends.
 }
+
+
+if C["unitframes"].layout == 4 then 
+	C["general"].backdropcolor = { .05,.05,.05,1 }                -- default backdrop color of panels
+	C["general"].bordercolor = { 0,0,0,1 }                    -- default border color of panels
+	C["chat"].classbg=false
+end

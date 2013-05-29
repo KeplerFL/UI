@@ -121,6 +121,7 @@
 	<Script file="modules\unitframes\layouts\tukui.lua"/>
 	<Script file="modules\unitframes\layouts\natzu.lua"/>
 	<Script file="modules\unitframes\layouts\natzu2.lua"/>
+	<Script file="modules\unitframes\layouts\cohesion.lua"/>
 	<Script file="modules\misc\altpowerbar.lua"/>
 	<Script file="modules\misc\threatbar.lua"/>
 	<Script file="modules\misc\combo.lua"/>
