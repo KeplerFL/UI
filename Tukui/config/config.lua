@@ -25,8 +25,8 @@ C["general"] = {
 C["unitframes"] = {
 	-- layout
 	["layout"] = 4, 									-- UF layout, 1 Natzu, 2 Duffed, 3 Duffed[2]
-	["buffrows"] = 2, 
-	["debuffrows"] = 4, 
+	["buffrows"] = 2, 									-- Buffs Rows
+	["debuffrows"] = 4, 								-- Debuffs Rows
 	-- general options
 	["enable"] = true,                                  -- do i really need to explain this?
 	["enemyhcolor"] = false,                            -- enemy target (players) color by hostility, very useful for healer.
@@ -184,6 +184,11 @@ C["invite"] = {
 	["autoaccept"] = true,                              -- auto-accept invite from guildmate and friends.
 }
 
+C["CD"] = {
+	["size"] = 30, 										-- size of the spell cd buttons
+	["offset"]= 10,										-- offset between frames
+	["iconPerRow"] = 6,										-- number of icon per row
+}
 
 if C["unitframes"].layout == 4 then 
 	C["general"].backdropcolor = { .05,.05,.05,1 }                -- default backdrop color of panels

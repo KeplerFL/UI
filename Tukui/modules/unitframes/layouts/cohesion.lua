@@ -110,7 +110,8 @@ local function Shared(self, unit)
 		health:SetPoint("TOPLEFT")
 		health:SetPoint("TOPRIGHT")
 		health:SetStatusBarTexture(normTex)
-				
+		
+		self:Width(health:GetWidth())
 		-- health bar background
 		local healthBG = health:CreateTexture(nil, 'BORDER')
 		healthBG:Point("TOPLEFT", health, "TOPLEFT", -1, 1)
@@ -635,7 +636,7 @@ local function Shared(self, unit)
 		local Name = health:CreateFontString(nil, "MONOCHROMEOUTLINE")
 		Name:Point("CENTER", self.Health, "CENTER", 0, 0)
 		Name:SetJustifyH("LEFT")
-		Name:SetFont(font1, 10, "MONOCHROMEOUTLINE")
+		Name:SetFont(font2, 10, "MONOCHROMEOUTLINE")
 
 		self:Tag(Name, '[Tukui:getnamecolor][Tukui:namelong] [Tukui:diffcolor][level] [shortclassification]')
 		self.Name = Name
@@ -736,7 +737,7 @@ local function Shared(self, unit)
 				castbar:SetFrameLevel(6)
 				castbar:SetHeight(18)
 				castbar:SetWidth(185)
-				castbar:SetPoint("TOPLEFT", self.Health, "TOPLEFT", 0, 74)
+				castbar:SetPoint("TOPLEFT", self.Debuffs, "TOPLEFT", 0, 25)
 			
 				castbar.bg = CreateFrame("Frame", nil, castbar)
 				castbar.bg:SetTemplate("Default")

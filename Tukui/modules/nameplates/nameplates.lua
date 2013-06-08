@@ -7,10 +7,10 @@ local TEXTURE = C["media"].normTex
 local FONT = C["media"].font
 local FONTSIZE = 10
 local FONTFLAG = "THINOUTLINE"
-local hpHeight = 12
+local hpHeight = 20
 local hpWidth = 110
 local iconSize = 25		--Size of all Icons, RaidIcon/ClassIcon/Castbar Icon
-local cbHeight = 5
+local cbHeight = 15
 local cbWidth = 110
 local blankTex = C["media"].blank
 local OVERLAY = [=[Interface\TargetingFrame\UI-TargetingFrame-Flash]=]

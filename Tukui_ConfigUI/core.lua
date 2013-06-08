@@ -20,6 +20,7 @@ local ALLOWED_GROUPS = {
 	["error"]=1,
 	["invite"]=1,
 	["auras"]=1,
+	["CD"] = 1,
 }
 
 if TukuiEditedDefaultConfig then

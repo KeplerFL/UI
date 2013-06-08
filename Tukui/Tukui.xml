@@ -198,6 +198,7 @@
 	<Script file="modules\extras\hunter.lua"/>
 	<Script file="modules\extras\desc.lua"/>
 	<Script file="modules\extras\menu.lua"/>
+	<Script file="modules\extras\cooldown.lua"/>
 	
 	<Script file="developer\test.lua"/>	
 </Ui>

@@ -16,6 +16,8 @@ TukuiConfigUILocalization.generalomenreskin = "Reskin Omen frames to match Tukui
 TukuiConfigUILocalization.generalrecountreskin = "Reskin Recount frames to match Tukui"
 TukuiConfigUILocalization.generalskadareskin = "Reskin Skada frames to match Tukui"
 TukuiConfigUILocalization.generaltinydpsreskin = "Reskin Tiny DPS frames to match Tukui"
+TukuiConfigUILocalization.generalbottomminimap = "Layout with minimap on Bottom Left of the screen [NOT FINISHED!!]"
+TukuiConfigUILocalization.generalslidetime = "Slide time for animations [default .6]"
  
 -- nameplate
 TukuiConfigUILocalization.nameplate = "Nameplates"
@@ -116,6 +118,9 @@ TukuiConfigUILocalization.unitframesweakenedsoulbar = "Enable Weakened Soul bar 
 TukuiConfigUILocalization.unitframesonlyselfdebuffs = "Display only our debuffs on target"
 TukuiConfigUILocalization.unitframesshowfocustarget = "Enable Focus target"
 TukuiConfigUILocalization.unitframesbordercolor = "Set default border color of panels"
+TukuiConfigUILocalization.unitframesdebuffrows = "Number of rows of debuffs on target"
+TukuiConfigUILocalization.unitframeslayout = "Layout of UFs [1-4]"
+TukuiConfigUILocalization.unitframesbuffrows = "Number of rows of buffs on target"
  
 -- loot
 TukuiConfigUILocalization.loot = "Loot"
@@ -168,12 +173,19 @@ TukuiConfigUILocalization.chat = "Chat"
 TukuiConfigUILocalization.chatenable = "Enable Tukui Chat"
 TukuiConfigUILocalization.chatwhispersound = "Play sound when receiving private message"
 TukuiConfigUILocalization.chatbackground = "Enable chat panel background"
+TukuiConfigUILocalization.chatclassbg = "Enable Class/Faction chat backgrounds"
 
 -- buff
 TukuiConfigUILocalization.auras = "Auras"
 TukuiConfigUILocalization.aurasplayer = "Enable Tukui Buff/Debuff Frames"
 TukuiConfigUILocalization.aurasconsolidate = "Enable Consolidate Buffs"
 TukuiConfigUILocalization.aurasflash = "Enable flashing animation on aura less than 30 seconds"
+
+-- Cooldown
+TukuiConfigUILocalization.CD = "Interrupt Bar"
+TukuiConfigUILocalization.CDsize = "Size of the CD Icon"
+TukuiConfigUILocalization.CDoffset = "Offset between buttons"
+TukuiConfigUILocalization.CDiconPerRow = "Number of button on every row"
 
 -- buttons
 TukuiConfigUILocalization.option_button_reset = "Reset"
