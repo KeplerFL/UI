@@ -34,8 +34,17 @@ T.PP = function(p, obj)
 	local mapleft = TukuiMinimapStatsLeft
 	local mapright = TukuiMinimapStatsRight
 	local bottom = TukuiInfoBottom
-	
-	if p == 1 then
+	local zero = CreateFrame("Frame", "0frame", UIParent)
+	zero:CreatePanel("Default", 1, 1, "CENTER", UIParent, "CENTER", 0, 0)
+	zero:SetAlpha(0)
+	obj:ClearAllPoints()
+	if p == 20 then
+		obj:SetParent(zero)
+		obj:SetHeight(zero:GetHeight())
+		obj:SetPoint("LEFT", zero, 30, 0)
+		obj:SetPoint('TOP', zero)
+		obj:SetPoint('BOTTOM', zero)
+	elseif p == 1 then
 		obj:SetParent(left)
 		obj:SetHeight(left:GetHeight())
 		obj:SetPoint("LEFT", left, 30, 0)

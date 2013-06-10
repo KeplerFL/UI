@@ -3,7 +3,6 @@
 --------------------------------------------------------------------
 local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 
-if not C["datatext"].system or C["datatext"].system == 0 then return end
 
 local Stat = CreateFrame("Frame", "TukuiStatSystem")
 Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -19,6 +18,9 @@ local Text  = Stat:CreateFontString("TukuiStatSystemText", "OVERLAY")
 Text:SetFont(C.media.font, C["datatext"].fontsize)
 T.PP(C["datatext"].system, Text)
 
+T.SystemText = function()
+	T.PP(C["datatext"].system, Text)
+end
 local bandwidthString = "%.2f Mbps"
 local percentageString = "%.2f%%"
 

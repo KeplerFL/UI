@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- GOLD
 --------------------------------------------------------------------
 
-if C["datatext"].gold and C["datatext"].gold > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatGold")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
@@ -15,6 +14,10 @@ if C["datatext"].gold and C["datatext"].gold > 0 then
 	local Text  = Stat:CreateFontString("TukuiStatGoldText", "OVERLAY")
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].gold, Text)
+	
+	T.GoldText = function()
+		T.PP(C["datatext"].gold, Text)
+	end
 
 	local Profit	= 0
 	local Spent		= 0
@@ -127,4 +130,3 @@ if C["datatext"].gold and C["datatext"].gold > 0 then
 	end
 	SLASH_RESETGOLD1 = "/resetgold"
 	SlashCmdList["RESETGOLD"] = RESETGOLD
-end

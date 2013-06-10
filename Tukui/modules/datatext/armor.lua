@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- player Armor
 --------------------------------------------------------------------
 
-if C["datatext"].armor and C["datatext"].armor > 0 then
 	local effectiveArmor
 	
 	local Stat = CreateFrame("Frame", "TukuiStatArmor")
@@ -17,7 +16,11 @@ if C["datatext"].armor and C["datatext"].armor > 0 then
 	local Text  = Stat:CreateFontString("TukuiStatArmorText", "OVERLAY")
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].armor, Text)
-
+	
+	T.ArmorText = function()
+		T.PP(C["datatext"].armor, Text)
+	end
+	
 	local function Update(self)
 		effectiveArmor = select(2, UnitArmor("player"))
 		Text:SetText(Stat.Color2..(effectiveArmor).."|r "..Stat.Color1..L.datatext_armor.."|r")
@@ -56,4 +59,3 @@ if C["datatext"].armor and C["datatext"].armor > 0 then
 		end
 	end)
 	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
-end

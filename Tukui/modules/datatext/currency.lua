@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
  -- CURRENCY
 --------------------------------------------------------------------
 
-if C["datatext"].currency and C["datatext"].currency > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatCurrency")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
@@ -16,6 +15,9 @@ if C["datatext"].currency and C["datatext"].currency > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].currency, Text)
 	
+	T.CurrencyText = function()
+		T.PP(C["datatext"].currency, Text)
+	end
 	local function update()
 		local _text = Stat.Color2.."---".."|r"
 		for i = 1, MAX_WATCHED_TOKENS do
@@ -43,4 +45,3 @@ if C["datatext"].currency and C["datatext"].currency > 0 then
 	hooksecurefunc("BackpackTokenFrame_Update", update)
 	Stat:SetScript("OnEvent", OnEvent)
 	Stat:SetScript("OnMouseDown", function() ToggleCharacter("TokenFrame") end)
-end

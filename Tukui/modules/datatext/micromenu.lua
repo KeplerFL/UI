@@ -12,7 +12,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 --        map.
 -----------------------------------------
 
-if C["datatext"].micromenu and C["datatext"].micromenu > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatMicroMenu")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
@@ -25,6 +24,9 @@ if C["datatext"].micromenu and C["datatext"].micromenu > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].micromenu, Text)
 
+	T.MicroText = function()
+		T.PP(C["datatext"].micromenu, Text)
+	end
 	local function OnEvent(self, event, ...)
 		Text:SetText(Stat.Color2..MAINMENU_BUTTON.."|r")
 		self:SetAllPoints(Text)
@@ -38,4 +40,3 @@ if C["datatext"].micromenu and C["datatext"].micromenu > 0 then
 	Stat:RegisterEvent("PLAYER_LOGIN")
 	Stat:SetScript("OnEvent", OnEvent)
 	Stat:SetScript("OnMouseDown", function() OpenMenu() end)
-end

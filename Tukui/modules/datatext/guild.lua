@@ -3,7 +3,6 @@
 --------------------------------------------------------------------
 local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 
-if not C["datatext"].guild or C["datatext"].guild == 0 then return end
 
 local Stat = CreateFrame("Frame", "TukuiStatGuild")
 Stat:EnableMouse(true)
@@ -32,6 +31,10 @@ local totalOnline = 0
 local Text = Stat:CreateFontString("TukuiStatGuildText", "OVERLAY")
 Text:SetFont(C.media.font, C["datatext"].fontsize)
 T.PP(C["datatext"].guild, Text)
+
+T.GuildText = function()
+	T.PP(C["datatext"].guild, Text)
+end
 
 local function BuildGuildTable()
 	totalOnline = 0

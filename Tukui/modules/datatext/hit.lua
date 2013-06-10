@@ -5,7 +5,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 --------------------------------------------------------------------
 
 -- Hit Rating
-if not C["datatext"].hit == nil or C["datatext"].hit > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatHit")
 	Stat.Option = C.datatext.hit
 	Stat.Color1 = T.RGBToHex(unpack(C.media.datatextcolor1))
@@ -15,6 +14,9 @@ if not C["datatext"].hit == nil or C["datatext"].hit > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].hit, Text)
 
+	T.HitText = function()
+		T.PP(C["datatext"].hit, Text)
+	end
 	local int = 1
 
 	local function Update(self, t)		
@@ -46,4 +48,3 @@ if not C["datatext"].hit == nil or C["datatext"].hit > 0 then
 
 	Stat:SetScript("OnUpdate", Update)
 	Update(Stat, 10)
-end

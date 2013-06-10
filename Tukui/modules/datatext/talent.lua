@@ -1,6 +1,5 @@
 ﻿local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, variables; C - config; L - locales
 
-if C.datatext.talent and C.datatext.talent > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatTalent")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
@@ -13,6 +12,9 @@ if C.datatext.talent and C.datatext.talent > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C.datatext.talent, Text)
  
+	T.TalentText = function()
+		T.PP(C.datatext.talent, Text)
+	end
 	local function Update(self)
 		if not GetPrimaryTalentTree() then
 			Text:SetText(L.datatext_notalents) 
@@ -68,4 +70,3 @@ if C.datatext.talent and C.datatext.talent > 0 then
 		c = GetActiveTalentGroup(false,false)
 		SetActiveTalentGroup(c == 1 and 2 or 1)
 	end)
-end

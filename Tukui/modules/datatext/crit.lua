@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- Crit (Spell or Melee.. or ranged)
 --------------------------------------------------------------------
 
-if C["datatext"].crit and C["datatext"].crit > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatCrit")
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
@@ -15,6 +14,10 @@ if C["datatext"].crit and C["datatext"].crit > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].crit, Text)
 
+	T.CritText = function()
+		T.PP(C["datatext"].crit, Text)
+	end
+	
 	local int = 1
 
 	local function Update(self, t)
@@ -38,4 +41,3 @@ if C["datatext"].crit and C["datatext"].crit > 0 then
 
 	Stat:SetScript("OnUpdate", Update)
 	Update(Stat, 10)
-end

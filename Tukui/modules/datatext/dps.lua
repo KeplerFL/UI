@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- SUPPORT FOR DPS Feed... 
 --------------------------------------------------------------------
 
-if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 	local events = {SWING_DAMAGE = true, RANGE_DAMAGE = true, SPELL_DAMAGE = true, SPELL_PERIODIC_DAMAGE = true, DAMAGE_SHIELD = true, DAMAGE_SPLIT = true, SPELL_EXTRA_ATTACKS = true}
 	local DPS_FEED = CreateFrame("Frame", "TukuiStatDamage")
 	DPS_FEED.Option = C.datatext.dps_text
@@ -21,6 +20,10 @@ if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 
 	T.PP(C["datatext"].dps_text, dText)
 
+	T.DpsText = function(I)
+		T.PP(C["datatext"].dps_text, dText)
+	end
+	
 	DPS_FEED:EnableMouse(true)
 	DPS_FEED:SetFrameStrata("BACKGROUND")
 	DPS_FEED:SetFrameLevel(3)
@@ -108,4 +111,3 @@ if C["datatext"].dps_text and C["datatext"].dps_text > 0 then
 		dmg_total = 0
 		last_dmg_amount = 0
 	end)
-end

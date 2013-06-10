@@ -4,7 +4,6 @@ local T, C, L = unpack(select(2, ...))
  -- Call To Arms -- Elv22
 --------------------------------------------------------------------
 
-if C["datatext"].calltoarms and C["datatext"].calltoarms > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatCallToArms")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("MEDIUM")
@@ -18,6 +17,11 @@ if C["datatext"].calltoarms and C["datatext"].calltoarms > 0 then
 	Text:SetShadowOffset(T.mult, -T.mult)
 	Text:SetShadowColor(0, 0, 0, 0.4)
 	T.PP(C["datatext"].calltoarms, Text)
+	
+	T.CTAText = function()
+		T.PP(C["datatext"].calltoarms, Text)
+	end
+	
 	Stat:SetParent(Text:GetParent())
 	
 	local TANK_STRING = TANK
@@ -126,4 +130,3 @@ if C["datatext"].calltoarms and C["datatext"].calltoarms > 0 then
 	Stat:SetScript("OnMouseDown", function() ToggleFrame(LFDParentFrame) end)
 	Stat:SetScript("OnEnter", OnEnter)
 	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
-end

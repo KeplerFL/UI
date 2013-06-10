@@ -3,7 +3,6 @@
 --------------------------------------------------------------------
 local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 
-if not C["datatext"].wowtime or C["datatext"].wowtime == 0 then return end
 
 local Stat = CreateFrame("Frame", "TukuiStatTime")
 Stat:EnableMouse(true)
@@ -16,6 +15,10 @@ Stat.Color2 = T.RGBToHex(unpack(C.media.datatextcolor2))
 local Text = Stat:CreateFontString("TukuiStatTimeText", "OVERLAY")
 Text:SetFont(C.media.font, C["datatext"].fontsize)
 T.PP(C["datatext"].wowtime, Text)
+
+T.TimeText = function()
+	T.PP(C["datatext"].wowtime, Text)
+end
 
 local europeDisplayFormat = string.join("", Stat.Color2.."%02d", ":%02d|r")
 local ukDisplayFormat = string.join("", "", Stat.Color2.."%d", ":%02d", " %s|r")

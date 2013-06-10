@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- SUPPORT FOR HPS Feed... 
 --------------------------------------------------------------------
 
-if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
 	local events = {SPELL_HEAL = true, SPELL_PERIODIC_HEAL = true}
 	local HPS_FEED = CreateFrame("Frame", "TukuiStatHeal")
 	HPS_FEED.Option = C.datatext.hps_text
@@ -19,7 +18,10 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
 	hText:SetText("0.0 ",L.datatext_hps)
  
 	T.PP(C["datatext"].hps_text, hText)
- 
+	
+	T.HpsText = function()
+		T.PP(C["datatext"].hps_text, hText)
+	end
 	HPS_FEED:EnableMouse(true)
 	HPS_FEED:SetFrameStrata("BACKGROUND")
 	HPS_FEED:SetFrameLevel(3)
@@ -97,5 +99,3 @@ if C["datatext"].hps_text and C["datatext"].hps_text > 0 then
 			return string.format(HPS_FEED.Color2.."%.1fk |r" .. HPS_FEED.Color1..L.datatext_hps.."|r", ((actual_heals_total or 0) / (cmbt_time or 1)) / 1000)
 		end
 	end
-
-end

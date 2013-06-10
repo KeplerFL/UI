@@ -24,7 +24,7 @@ C["general"] = {
 
 C["unitframes"] = {
 	-- layout
-	["layout"] = 4, 									-- UF layout, 1 Natzu, 2 Duffed, 3 Duffed[2]
+	["layout"] = 2, 									-- UF layout, 1 Natzu, 2 Duffed, 3 Duffed[2]
 	["buffrows"] = 2, 									-- Buffs Rows
 	["debuffrows"] = 4, 								-- Debuffs Rows
 	-- general options

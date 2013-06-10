@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- Player Avoidance
 --------------------------------------------------------------------
 
-if C["datatext"].avd and C["datatext"].avd > 0 then
 	local dodge, parry, block, MissChance, avoidance, targetlv, playerlv, basemisschance, leveldifference
 	local Stat = CreateFrame("Frame", "TukuiStatAvoidance")
 	Stat:EnableMouse(true)
@@ -16,6 +15,10 @@ if C["datatext"].avd and C["datatext"].avd > 0 then
 	local Text  = Stat:CreateFontString("TukuiStatAvoidanceText", "OVERLAY")
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].avd, Text)
+	
+	T.AvoidanceText = function()
+		T.PP(C["datatext"].avd, Text)
+	end
 	
 	local targetlv, playerlv, dodge, parry, block, MissChance
 
@@ -90,4 +93,3 @@ if C["datatext"].avd and C["datatext"].avd > 0 then
 		end
 	end)
 	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
-end

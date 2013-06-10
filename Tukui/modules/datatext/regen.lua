@@ -1,5 +1,4 @@
 local T, C, L = unpack(select(2, ...))
-if not C["datatext"].regen and not C["datatext"].regen > 0 then return end
 
 local Stat = CreateFrame("Frame", "TukuiStatRegen")
 Stat:SetFrameStrata("BACKGROUND")
@@ -14,6 +13,9 @@ Text:SetShadowColor(0, 0, 0)
 Text:SetShadowOffset(1.25, -1.25)
 T.PP(C["datatext"].regen, Text)
 
+T.RegenText = function()
+	T.PP(C["datatext"].regen, Text)
+end
 Stat:RegisterEvent("PLAYER_ENTERING_WORLD")
 Stat:RegisterEvent("PLAYER_REGEN_DISABLED")
 Stat:RegisterEvent("PLAYER_REGEN_ENABLED")

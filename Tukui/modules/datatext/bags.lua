@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
  -- BAGS
 --------------------------------------------------------------------
 
-if C["datatext"].bags and C["datatext"].bags > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatBags")
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
@@ -15,6 +14,10 @@ if C["datatext"].bags and C["datatext"].bags > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].bags, Text)
 
+	T.BagText = function()
+		T.PP(C["datatext"].bags, Text)
+	end
+	
 	local function OnEvent(self, event, ...)
 		local free, total,used = 0, 0, 0
 		for i = 0, NUM_BAG_SLOTS do
@@ -28,5 +31,3 @@ if C["datatext"].bags and C["datatext"].bags > 0 then
 	Stat:RegisterEvent("PLAYER_LOGIN")
 	Stat:RegisterEvent("BAG_UPDATE")
 	Stat:SetScript("OnEvent", OnEvent)
-
-end

@@ -2,8 +2,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 --------------------------------------------------------------------
 -- DURABILITY
 --------------------------------------------------------------------
-	
-if C["datatext"].dur and C["datatext"].dur > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatDurability")
 	Stat:EnableMouse(true)
 	Stat:SetFrameStrata("BACKGROUND")
@@ -16,6 +14,10 @@ if C["datatext"].dur and C["datatext"].dur > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].dur, Text)
 
+	T.DurText = function()
+		T.PP(C["datatext"].dur, Text)
+	end
+	
 	local function OnEvent(self)
 		local Total = 0
 		local current, max
@@ -63,4 +65,3 @@ if C["datatext"].dur and C["datatext"].dur > 0 then
 		end
 	end)
 	Stat:SetScript("OnLeave", function() GameTooltip:Hide() end)
-end

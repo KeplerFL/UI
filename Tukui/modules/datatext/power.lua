@@ -4,7 +4,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- player power (attackpower or power depending on what you have more of)
 --------------------------------------------------------------------
 
-if C["datatext"].power and C["datatext"].power > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatPower")
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
@@ -16,6 +15,10 @@ if C["datatext"].power and C["datatext"].power > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].power, Text)
 
+	T.PowerText = function()
+		T.PP(C["datatext"].power, Text)
+	end
+	
 	local int = 1
 
 	local function Update(self, t)
@@ -55,5 +58,4 @@ if C["datatext"].power and C["datatext"].power > 0 then
 	end
 
 	Stat:SetScript("OnUpdate", Update)
-	Update(Stat, 10)
-end
+	Update(Stat, 10)	

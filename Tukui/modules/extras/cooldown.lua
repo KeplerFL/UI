@@ -38,7 +38,9 @@ local spellids = {
 [6789] = 120,
 [5484] = 40,
 [51514]= 45,
-[8143] = 60}
+[8143] = 60,
+[2094] = 180, 
+[1856] = 180,}
 for spellid,time in pairs(spellids) do
 	local name,_,spellicon = GetSpellInfo(spellid)	
 	abilities[name] = { icon = spellicon, duration = time }
@@ -56,7 +58,7 @@ end
 -----------------------------------------------------
 
 local order = {6552, 2139, 19647, 1766, 47528, 16979, 80965, 96231, 8122, 57994, 15487, 64044, 33206, 10060, 19236, 58769, 100, 49576, 47476, 48707, 48982, 
-49203, 19263, 19503, 34490, 6789, 5484, 51514, 8143}
+49203, 19263, 19503, 34490, 6789, 5484, 51514, 8143, 2094, 1856}
 
 -----------------------------------------------------
 -----------------------------------------------------
@@ -117,6 +119,7 @@ local function InterruptBar_AddIcons()
 		text:SetFont(STANDARD_TEXT_FONT,18,"OUTLINE")
 		text:SetTextColor(1,1,0,1)
 		text:SetPoint("LEFT",btn,"LEFT",2,0)
+		text:SetText("")
 		
 		btn.texture = texture
 		btn.text = text
@@ -182,23 +185,6 @@ local function InterruptBar_CreateBar()
 	InterruptBar_LoadPosition()
 end
 
-local function InterruptBar_UpdateText(text,cooldown)
-	if cooldown < 10 then 
-		if cooldown <= 0.5 then
-			text:SetText("")
-		else
-			text:SetFormattedText(" %d",cooldown)
-		end
-	else
-		text:SetFormattedText("%d",cooldown)
-	end
-	if cooldown < 6 then 
-		text:SetTextColor(1,0,0,1)
-	else 
-		text:SetTextColor(1,1,0,1) 
-	end
-end
-
 local function InterruptBar_StopAbility(ref,ability)
 	if InterruptBarDB.hidden then ref:Hide() end
 	if activetimers[ability] then activetimers[ability] = nil end
@@ -215,8 +201,6 @@ local function InterruptBar_OnUpdate(self, elapsed)
 			ref.cooldown = ref.start + ref.duration - GetTime()
 			if ref.cooldown <= 0 then
 				InterruptBar_StopAbility(ref,ability)
-			else 
-				InterruptBar_UpdateText(ref.text,floor(ref.cooldown+0.5))
 			end
 		end
 		if size == 0 then frame:SetScript("OnUpdate",nil) end
@@ -234,7 +218,6 @@ local function InterruptBar_StartTimer(ref,ability)
 		ref.cd:Show()
 		ref.cd:SetCooldown(GetTime()-0.40,ref.duration)
 		ref.start = GetTime()
-		InterruptBar_UpdateText(ref.text,ref.duration)
 	end
 	frame:SetScript("OnUpdate",InterruptBar_OnUpdate)
 end
@@ -327,7 +310,6 @@ local function InterruptBar_OnLoad(self)
 	SlashCmdList["InterruptBar"] = InterruptBar_Command
 	SLASH_InterruptBar1 = "/ib"
 	
-	ChatFrame1:AddMessage("Interrupt Bar by Kollektiv. Type /ib for options.",0,1,0)
 end
 
 local eventhandler = {

@@ -4,13 +4,10 @@
 if not C["nameplate"].enable == true then return end
 
 local TEXTURE = C["media"].normTex
-local FONT = C["media"].font
-local FONTSIZE = 10
-local FONTFLAG = "THINOUTLINE"
-local hpHeight = 20
+local hpHeight = 200
 local hpWidth = 110
 local iconSize = 25		--Size of all Icons, RaidIcon/ClassIcon/Castbar Icon
-local cbHeight = 15
+local cbHeight = 5
 local cbWidth = 110
 local blankTex = C["media"].blank
 local OVERLAY = [=[Interface\TargetingFrame\UI-TargetingFrame-Flash]=]
@@ -298,7 +295,7 @@ local function SkinObjects(frame)
 	
 	--Create Level
 	hp.level = hp:CreateFontString(nil, "OVERLAY")
-	hp.level:SetFont(FONT, FONTSIZE, FONTFLAG)
+	hp.level:SetFont(C["media"].font, 12)
 	hp.level:SetShadowColor(0, 0, 0, 0.4)
 	hp.level:SetTextColor(1, 1, 1)
 	hp.level:SetShadowOffset(T.mult, -T.mult)	
@@ -309,7 +306,7 @@ local function SkinObjects(frame)
 	--Create Health Text
 	if C["nameplate"].showhealth == true then
 		hp.value = hp:CreateFontString(nil, "OVERLAY")	
-		hp.value:SetFont(FONT, FONTSIZE, FONTFLAG)
+		hp.value:SetFont(C["media"].font, 12)
 		hp.value:SetShadowColor(0, 0, 0, 0.4)
 		hp.value:SetPoint("CENTER", hp)
 		hp.value:SetTextColor(1,1,1)
@@ -320,7 +317,7 @@ local function SkinObjects(frame)
 	hp.name = hp:CreateFontString(nil, 'OVERLAY')
 	hp.name:SetPoint('BOTTOMLEFT', hp, 'TOPLEFT', -10, 3)
 	hp.name:SetPoint('BOTTOMRIGHT', hp, 'TOPRIGHT', 10, 3)
-	hp.name:SetFont(FONT, FONTSIZE, FONTFLAG)
+	hp.name:SetFont(C["media"].font, 12)
 	hp.name:SetShadowColor(0, 0, 0, 0.4)
 	hp.name:SetShadowOffset(T.mult, -T.mult)
 	hp.oldname = oldname
@@ -340,7 +337,7 @@ local function SkinObjects(frame)
 	--Create Cast Time Text
 	cb.time = cb:CreateFontString(nil, "ARTWORK")
 	cb.time:SetPoint("RIGHT", cb, "LEFT", -1, 0)
-	cb.time:SetFont(FONT, FONTSIZE, FONTFLAG)
+	cb.time:SetFont(C["media"].font, 12)
 	cb.time:SetShadowColor(0, 0, 0, 0.4)
 	cb.time:SetTextColor(1, 1, 1)
 	cb.time:SetShadowOffset(T.mult, -T.mult)
@@ -348,7 +345,7 @@ local function SkinObjects(frame)
 	--Create Cast Name Text
 	cb.name = cb:CreateFontString(nil, "ARTWORK")
 	cb.name:SetPoint("TOP", cb, "BOTTOM", 0, -3)
-	cb.name:SetFont(FONT, FONTSIZE, FONTFLAG)
+	cb.name:SetFont(C["media"].font, 12)
 	cb.name:SetTextColor(1, 1, 1)
 	cb.name:SetShadowColor(0, 0, 0, 0.4)
 	cb.name:SetShadowOffset(T.mult, -T.mult)		
@@ -379,7 +376,7 @@ local function SkinObjects(frame)
 	raidicon:ClearAllPoints()
 	raidicon:SetPoint("BOTTOM", hp, "TOP", 0, 16)
 	raidicon:SetSize(iconSize*1.4, iconSize*1.4)
-	raidicon:SetTexture([[Interface\AddOns\Tukui\medias\textures\raidicons.blp]])
+	raidicon:SetTexture([[Interface\AddOns\Tukui\media\textures\raidicons.blp]])
 	frame.raidicon = raidicon
 	
 	--Hide Old Stuff
@@ -490,7 +487,7 @@ local function ShowHealth(frame, ...)
 	local d =(valueHealth/maxHealth)*100
 	
 	-- Match values
-	frame.hp:SetValue(valueHealth - 1)	--Bug Fix 4.1
+	frame.hp:SetValue(valueHealth - 1)  --Bug Fix 4.1
 	frame.hp:SetValue(valueHealth)
 	
 	if C["nameplate"].showhealth == true then

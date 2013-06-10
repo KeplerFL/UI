@@ -4,7 +4,6 @@ local T, C, L = unpack(select(2, ...))
 -- FRIEND
 --------------------------------------------------------------------
 
-if not C["datatext"].friends or C["datatext"].friends == 0 then return end
 
 -- create a popup
 StaticPopupDialogs.TUKUI_SET_BN_BROADCAST = {
@@ -38,6 +37,10 @@ local Text  = Stat:CreateFontString("TukuiStatFriendsText", "OVERLAY")
 Text:SetFont(C.media.font, C["datatext"].fontsize)
 Text:SetShadowOffset(T.mult, -T.mult)
 T.PP(C["datatext"].friends, Text)
+
+T.FriendText= function()
+	T.PP(C["datatext"].friends, Text)
+end
 
 local menuFrame = CreateFrame("Frame", "TukuiFriendRightClickMenu", UIParent, "UIDropDownMenuTemplate")
 local menuList = {

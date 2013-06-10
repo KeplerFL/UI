@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- player haste
 --------------------------------------------------------------------
 
-if C["datatext"].haste and C["datatext"].haste > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatHaste")
 	Stat:SetFrameStrata("BACKGROUND")
 	Stat:SetFrameLevel(3)
@@ -14,6 +13,10 @@ if C["datatext"].haste and C["datatext"].haste > 0 then
 	local Text  = Stat:CreateFontString("TukuiStatHasteText", "OVERLAY")
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].haste, Text)
+	
+	T.HasteText = function()
+		T.PP(C["datatext"].haste, Text)
+	end
 
 	local int = 1
 
@@ -39,4 +42,3 @@ if C["datatext"].haste and C["datatext"].haste > 0 then
 
 	Stat:SetScript("OnUpdate", Update)
 	Update(Stat, 10)
-end

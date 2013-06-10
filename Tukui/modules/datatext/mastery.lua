@@ -3,7 +3,6 @@ local T, C, L = unpack(select(2, ...)) -- Import: T - functions, constants, vari
 -- Mastery
 ----------------------------------------------------------------
 
-if not C["datatext"].mastery == nil or C["datatext"].mastery > 0 then
 	local Stat = CreateFrame("Frame", "TukuiStatMastery")
 	Stat.Option = C.datatext.mastery
 	Stat.Color1 = T.RGBToHex(unpack(C.media.datatextcolor1))
@@ -13,6 +12,9 @@ if not C["datatext"].mastery == nil or C["datatext"].mastery > 0 then
 	Text:SetFont(C.media.font, C["datatext"].fontsize)
 	T.PP(C["datatext"].mastery, Text)
 
+	T.MasteryText = function()
+		T.PP(C["datatext"].mastery, Text)
+	end
 	local int = 1
 	
 	local function Update(self, t)
@@ -25,4 +27,3 @@ if not C["datatext"].mastery == nil or C["datatext"].mastery > 0 then
 
 	Stat:SetScript("OnUpdate", Update)
 	Update(Stat, 10)
-end
