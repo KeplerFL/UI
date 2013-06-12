@@ -121,6 +121,12 @@ TukuiConfigUILocalization.unitframesbordercolor = "Set default border color of p
 TukuiConfigUILocalization.unitframesdebuffrows = "Number of rows of debuffs on target"
 TukuiConfigUILocalization.unitframeslayout = "Layout of UFs [1-4]"
 TukuiConfigUILocalization.unitframesbuffrows = "Number of rows of buffs on target"
+TukuiConfigUILocalization.unitframesplw = "Width of the Player/Target frames"
+TukuiConfigUILocalization.unitframesplh = "Heigth of the Player/Target frames"
+TukuiConfigUILocalization.unitframesfocusw = "Width of the focus frame"
+TukuiConfigUILocalization.unitframesfocush = "Height of the focus frame"
+TukuiConfigUILocalization.unitframestotpetw = "Width of the Target of Target / Pet frames"
+TukuiConfigUILocalization.unitframestotpeth = "Height of the Target of Target / Pet frames"
  
 -- loot
 TukuiConfigUILocalization.loot = "Loot"

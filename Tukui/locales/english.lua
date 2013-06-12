@@ -336,4 +336,16 @@ L.natsu_custom_text5 = "From the text on the Top-Right corner of right chat back
 L.natsu_credit_title = "|cff00AAFFCredits|r\n"
 L.natsu_credit_text = "Credits for my UI:\n|cffED1111Tukz|r, |cffED1111Elv|r, All the |cff00AAFFCwww.tukui.org|r that helped me a lot and last but not least, |cffED1111Hydra|r\n with his fantastic animations and effects.\nIf I forgot someone, sorry, let me know :)"
 
-
+L.dur = "Durability"
+L.guild = "Guild"
+L.power = "Power"
+L.haste = "Haste"
+L.regen = "Regen"
+L.friends = "Friends"
+L.fps_ms = "FPS & MS"
+L.hit = "Hit"
+L.mastery = "Mastery"
+L.bags = "Bag Slots"
+L.crit = "Crit"
+L.armor = "Armor"
+L.wowtime = "Clock"

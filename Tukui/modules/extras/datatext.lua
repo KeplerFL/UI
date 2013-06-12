@@ -6,7 +6,7 @@ local myPlayerName  = UnitName("player")
 -- create button function --thanks to Kacaos
 local function CreateUIButton(name, parent, text)
 	local b = CreateFrame("Button", name, parent, "SecureActionButtonTemplate")
-	b:Size (120, 30)
+	b:Size (70, 30)
 	b:StripTextures(true)
 	b:SetTemplate("Default")
 	b:SetBackdropColor(27/255, 224/255, 27/255)
@@ -100,8 +100,9 @@ local NewButton = function(text,parent)
 	local label = result:CreateFontString(nil,"OVERLAY",nil)
 	label:SetFont(C.media.font,12)
 	label:SetText(text)
-	result:SetWidth(label:GetWidth())
+	result:SetWidth(70)
 	result:SetHeight(label:GetHeight())
+	label:SetPoint("TOPLEFT", 2,-2)
 	result:SetFontString(label)
 
 	return result
@@ -148,6 +149,22 @@ end
 -- menu button
 local menu = CreateFrame("Button", "RTime", UIParent)
 
+local ALLOWED_OPTIONS = {
+	["fps_ms"] = 4,                                -- show total memory and others systems infos on panels
+	["bags"] = 10,                                       -- show space used in bags on panels
+	["gold"] = 6,                                       -- show your current gold on panels
+	["wowtime"] = 8,                                    -- show time on panels
+	["guild"] = 1,                                      -- show number on guildmate connected on panels
+	["dur"] = 2,                                        -- show your equipment durability on panels.
+	["friends"] = 3,                                  -- show a heal meter on panels
+	["power"] = 7,                                      -- show your attackpower/spellpower/healpower/rangedattackpower whatever stat is higher gets displayed
+	["haste"] = 0,                                      -- show your haste rating on panels.
+	["crit"] = 0,                                        -- show your current avoidance against the level of the mob your targeting
+	["armor"] = 0,                                      -- show your tracked currency on panels
+	["hit"] = 0,                                        -- show hit rating
+	["mastery"] = 11, 
+}
+
 local assign = function(n, d)	
 	C["datatext"][n] = d
 	SetValue("datatext", n, d)
@@ -166,17 +183,17 @@ end
 
 local createMenu = function(f)
 	local menubg = CreateFrame("Frame", "MenuBG", f)
-	menubg:CreatePanel("Default", 130, 50, "BOTTOMRIGHT", f, "TOPLEFT", 0, 150)
+	menubg:CreatePanel("Default", 80, 50, "BOTTOMRIGHT", f, "TOPLEFT", 0, 150)
 	menubg:SetFrameLevel(50)
 	menubg:SetClampedToScreen(true)
 	local offset=5
-	for group in pairs(C["datatext"]) do
+	for group in pairs(ALLOWED_OPTIONS) do
 		if group ~= "fontsize" and group ~= "time24" and group ~= "localtime" and group ~= "battleground" then
 			local o = "DTSelect-"..group
 			local translate = Local(group)
 			local button = NewButton(translate, menubg)
 			button:SetHeight(16)
-			button:SetWidth(125)
+			button:SetWidth(80)
 			button:SetPoint("TOPLEFT", 5, -offset)
 			button:SetScript("OnClick", function(self) menubg:Kill() assign(tostring(self:GetText()), f.value)end)		
 			menubg:Height(offset + 40)

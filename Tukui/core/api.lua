@@ -48,6 +48,48 @@ end
 ---------------------------------------------------
 -- TUKUI API START HERE
 ---------------------------------------------------
+local function innerBorder(f)
+	if f.innerborder then f.innerborder:Show() return end
+	f.innerborder = CreateFrame("Frame", nil, f)
+	f.innerborder:SetPoint("TOPLEFT", 1, -1)
+	f.innerborder:SetPoint("BOTTOMRIGHT", -1, 1)
+	f.innerborder:SetBackdrop({
+		edgeFile = C["media"].blank, 
+		edgeSize = 1, 
+		insets = { left = 1, right = 1, top = 1, bottom = 1 }
+	})
+	f.innerborder:SetBackdropBorderColor(0,0,0)
+
+end
+
+local function outerBorder(f)
+	if f.outerborder then f.outerborder:Show() return end
+	f.outerborder = CreateFrame("Frame", nil, f)
+	f.outerborder:SetPoint("TOPLEFT", -1, 1)
+	f.outerborder:SetPoint("BOTTOMRIGHT", 1, -1)
+	f.outerborder:SetBackdrop({
+		edgeFile = C["media"].blank, 
+		edgeSize = 1, 
+		insets = { left = 1, right = 1, top = 1, bottom = 1 }
+	})
+	f.outerborder:SetBackdropBorderColor(0,0,0)
+
+end
+
+local function ThickBorder(f, force)
+	if f.backdrop and not force then
+		outerBorder(f)
+		innerBorder(f)
+	end
+end
+
+local function AddBorder(f)
+	local frame = f:CreateTexture(nil, 'BORDER')
+	frame:Point("TOPLEFT", f, "TOPLEFT", -1, 1)
+	frame:Point("BOTTOMRIGHT", f, "BOTTOMRIGHT", 1, -1)
+	frame:SetTexture(.1, .1, .1)
+	f.border = frame
+end
 
 local function Size(frame, width, height)
 	frame:SetSize(Scale(width), Scale(height or width))
@@ -268,6 +310,12 @@ end
 
 local function addapi(object)
 	local mt = getmetatable(object).__index
+	if not object.CreateBorder then mt.CreateBorder = CreateBorder end
+	if not object.SetBorder then mt.SetBorder = SetBorder end
+	if not object.ThickBorder then mt.ThickBorder = ThickBorder end
+	if not object.InnerBorder then mt.Innerborder = innerBorder end
+	if not object.OuterBorder then mt.Outerborder = outerBorder end
+	if not object.AddBorder then mt.AddBorder = AddBorder end
 	if not object.Size then mt.Size = Size end
 	if not object.Point then mt.Point = Point end
 	if not object.SetTemplate then mt.SetTemplate = SetTemplate end

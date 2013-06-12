@@ -447,10 +447,12 @@ if C.chat.background then
 	-- CHAT BG LEFT
 	local chatleftbg = CreateFrame("Frame", "TukuiChatBackgroundLeft", TukuiInfoLeft)
 	chatleftbg:CreatePanel("Transparent", T.InfoLeftRightWidth, 116, "BOTTOM", TukuiInfoLeft, "TOP", 0, 2)
+	chatleftbg:SetBackdropColor(.0,.0,.0,0.6)
 	T.set_anim(TukuiChatBackgroundLeft, true, -500, 0, .6)
 	-- CHAT BG RIGHT
 	local chatrightbg = CreateFrame("Frame", "TukuiChatBackgroundRight", TukuiInfoRight)
 	chatrightbg:CreatePanel("Transparent", T.InfoLeftRightWidth, 116, "BOTTOM", TukuiInfoRight, "TOP", 0, 2)
+	chatrightbg:SetBackdropColor(.0,.0,.0,0.6)
 	T.set_anim(TukuiChatBackgroundRight, true, 500, 0, .6)
 	
 	if C.chat.classbg == true then
@@ -470,14 +472,14 @@ if C.chat.background then
 	
 	-- LEFT TAB PANEL
 	local tabsbgleft = CreateFrame("Frame", "TukuiTabsLeftBackground", TukuiBar1)
-	tabsbgleft:CreatePanel("Transparent", T.InfoLeftRightWidth , 19, "BOTTOM", chatleftbg, "TOP", 0, 2)
+	tabsbgleft:CreatePanel("Default", T.InfoLeftRightWidth , 19, "BOTTOM", chatleftbg, "TOP", 0, 2)
 	tabsbgleft:SetFrameLevel(2)
 	tabsbgleft:SetFrameStrata("BACKGROUND")
 	T.set_anim(TukuiTabsLeftBackground, true, -500, 0, .6)
 		
 	-- RIGHT TAB PANEL
 	local tabsbgright = CreateFrame("Frame", "TukuiTabsRightBackground", TukuiBar1)
-	tabsbgright:CreatePanel("Transparent", T.InfoLeftRightWidth, 19, "BOTTOM", chatrightbg, "TOP", 0, 2)
+	tabsbgright:CreatePanel("Default", T.InfoLeftRightWidth, 19, "BOTTOM", chatrightbg, "TOP", 0, 2)
 	tabsbgright:SetFrameLevel(2)
 	tabsbgright:SetFrameStrata("BACKGROUND")
 	T.set_anim(TukuiTabsRightBackground, true, 500, 0, .6)	
