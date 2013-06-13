@@ -494,3 +494,22 @@ if C["datatext"].battleground == true then
 	bgframe:SetFrameLevel(0)
 	bgframe:EnableMouse(true)
 end
+
+
+if C["actionbar"].stacked then
+	TukuiBar5:Point("BOTTOMLEFT", TukuiTabsRightBackground, "TOPLEFT", 0, 5)
+	TukuiBar5:SetWidth((T.buttonsize * 12) + (T.buttonspacing * 13))
+	TukuiBar5:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
+
+	TukuiBar6:SetHeight((T.buttonsize * 1) + (T.buttonspacing * 2))
+	TukuiBar6:SetWidth((T.buttonsize * 13) + (T.buttonspacing * 13))
+	TukuiBar6:SetPoint("BOTTOM", TukuiBar5, "TOP", 0, 0)
+
+	TukuiBar7:SetHeight((T.buttonsize * 1) + (T.buttonspacing * 2))
+	TukuiBar7:SetWidth((T.buttonsize * 13) + (T.buttonspacing * 13))
+	TukuiBar7:ClearAllPoints()
+	TukuiBar7:SetPoint("BOTTOM", TukuiBar6, "TOP", 0 , 0)
+end
+
+
+

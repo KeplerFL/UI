@@ -8,7 +8,7 @@ C["general"] = {
 	["autoscale"] = false,                               -- mainly enabled for users that don't want to mess with the config file
 	["uiscale"] = 0.7,                                 -- set your value (between 0.64 and 1) of your uiscale if autoscale is off
 	["overridelowtohigh"] = false,                      -- EXPERIMENTAL ONLY! override lower version to higher version on a lower reso.
-	["backdropcolor"] = { .15,.15,.15,1 },                   -- default backdrop color of panels
+	["backdropcolor"] = { .12,.12,.12,1 },                   -- default backdrop color of panels
 	["bordercolor"] = { 0,0,0,1 },                     -- default border color of panels
 	["blizzardreskin"] = true,                          -- reskin all Blizzard frames
 	["bigwigsreskin"] = true,                           -- reskin bigwigs
@@ -81,6 +81,7 @@ C["unitframes"] = {
 	["focush"] = 29,
 	["totpetw"] = 130,
 	["totpeth"] = 18,
+	["ph"] = 5,
 	
 }
 
@@ -103,6 +104,7 @@ C["actionbar"] = {
 	["petbuttonsize"] = 29,                             -- pet & stance buttons size
 	["buttonspacing"] = 4,                              -- buttons spacing
 	["ownshdbar"] = false,                              -- use a complete new stance bar for shadow dance (rogue only)
+	["stacked"] = false,									-- flip right bars horizontally
 }
 
 C["bags"] = {

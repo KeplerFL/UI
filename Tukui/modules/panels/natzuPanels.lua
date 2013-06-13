@@ -104,6 +104,60 @@ local ToggleExpand = function(self, minimized)
 		self:SetScript("OnUpdate", Close)
 	end
 end
+
+-- Functions
+local UIFrameFadeIn = UIFrameFadeIn
+local UIFrameFadeOut = UIFrameFadeOut
+local RAID_CLASS_COLORS = RAID_CLASS_COLORS
+local UnitClass = UnitClass
+
+local CreateGlow = function(self)
+	local Shadow = CreateFrame("Frame", nil, self)
+	Shadow:SetFrameLevel(1)
+	Shadow:SetFrameStrata(self:GetFrameStrata())
+	Shadow:Point("TOPLEFT", -3, 3)
+	Shadow:Point("BOTTOMLEFT", -3, -3)
+	Shadow:Point("TOPRIGHT", 3, 3)
+	Shadow:Point("BOTTOMRIGHT", 3, -3)
+	Shadow:SetBackdrop({ 
+		edgeFile = C["media"].glowTex, edgeSize = T.Scale(3),
+		insets = {left = T.Scale(10), right = T.Scale(10), top = T.Scale(10), bottom = T.Scale(10)},
+	})
+	Shadow:SetBackdropColor(0, 0, 0, 0)
+	Shadow:SetBackdropBorderColor(0, 0, 0, 0.5)
+	
+	return Shadow
+end
+
+local CreateGlowObjects = function(self, r, g, b)
+	if (not self.Previous) then
+		self.Previous = CreateGlow(self)
+	end
+	
+	if (not self.Current) then
+		self.Current = CreateGlow(self)
+	end
+	
+	self.Current:SetAlpha(0)
+	self.Previous:SetAlpha(1)
+	
+	self.Previous:SetBackdropBorderColor(r or 1, g or 1, b or 1)
+end
+
+local TransformGlow = function(self, r, g, b)
+	if (self.Previous:GetAlpha() == 1) then
+		self.Current:SetBackdropBorderColor(r or 1, g or 1, b or 1)
+		self.Current:SetBackdropColor(r or 1, g or 1, b or 1)
+		UIFrameFadeOut(self.Previous, 0.5, 1, 0)
+		UIFrameFadeIn(self.Current, 0.5, 0, 1)
+	elseif (self.Current:GetAlpha() == 1) then
+		self.Previous:SetBackdropBorderColor(r or 1, g or 1, b or 1)
+		self.Previous:SetBackdropColor(r or 1, g or 1, b or 1)
+		UIFrameFadeOut(self.Current, 0.5, 1, 0)
+		UIFrameFadeIn(self.Previous, 0.5, 0, 1)
+	end
+end
+
 -------------------------------------------------------------------------------------------
 ------------------------- Addon embedding -------------------------------------------------
 -------------------------------------------------------------------------------------------
@@ -327,3 +381,4 @@ button2:SetScript("OnClick", function()
 	end
 	
 end)
+

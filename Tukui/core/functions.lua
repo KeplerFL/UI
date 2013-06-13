@@ -1229,13 +1229,8 @@ T.UpdateDruidManaText = function(self)
 		end
 
 		if min ~= max then
-			if self.Power.value:GetText() then
-				self.DruidManaText:SetPoint("LEFT", self.Power.value, "RIGHT", 1, 0)
-				self.DruidManaText:SetFormattedText("|cffD7BEA5-|r  |cff4693FF%d%%|r|r", floor(min / max * 100))
-			else
-				self.DruidManaText:SetPoint("LEFT", self.panel, "LEFT", 4, 1)
-				self.DruidManaText:SetFormattedText("%d%%", floor(min / max * 100))
-			end
+			self.DruidManaText:SetPoint("TOPRIGHT", self.Health, "TOPRIGHT", -3, -3)
+			self.DruidManaText:SetFormattedText("  |cff4693FF%d%%|r|r", floor(min / max * 100))
 		else
 			self.DruidManaText:SetText()
 		end

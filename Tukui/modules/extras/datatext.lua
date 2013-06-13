@@ -192,10 +192,11 @@ local createMenu = function(f)
 			local o = "DTSelect-"..group
 			local translate = Local(group)
 			local button = NewButton(translate, menubg)
+			button.option = group
 			button:SetHeight(16)
 			button:SetWidth(80)
 			button:SetPoint("TOPLEFT", 5, -offset)
-			button:SetScript("OnClick", function(self) menubg:Kill() assign(tostring(self:GetText()), f.value)end)		
+			button:SetScript("OnClick", function(self) menubg:Kill() assign(tostring(self.option), f.value)end)		
 			menubg:Height(offset + 40)
 			offset=offset+20
 		end

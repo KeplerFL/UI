@@ -155,7 +155,7 @@ local function Shared(self, unit)
 		power.value:Point("BOTTOMRIGHT", self.Health, "BOTTOMRIGHT", -2, 2)
 		power.PreUpdate = T.PreUpdatePower
 		power.PostUpdate = T.PostUpdatePower
-				
+
 		self.Power = power
 		self.Power.bg = power.border
 		
@@ -288,7 +288,7 @@ local function Shared(self, unit)
 
 			-- experience bar on player via mouseover for player currently levelling a character
 			if T.level ~= MAX_PLAYER_LEVEL then
-				local Experience = CreateFrame("StatusBar", self:GetName().."_Experience", TukuiMinimap)
+				local Experience = CreateFrame("StatusBar", self:GetName().."_Experience", self)
 				Experience:SetStatusBarTexture(normTex)
 				Experience:SetStatusBarColor(0, 0.4, 1, .8)
 				Experience:SetBackdrop(backdrop)
@@ -353,16 +353,13 @@ local function Shared(self, unit)
 				if T.myclass == "DRUID" then
 					-- DRUID MANA BAR
 					local DruidManaBackground = CreateFrame("Frame", nil, self)
-					DruidManaBackground:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 1)
-					if T.lowversion then
-						DruidManaBackground:Size(186, 8)
-					else
-						DruidManaBackground:Size(250, 8)
-					end
+					DruidManaBackground:Point("BOTTOMLEFT", self.Health, "TOPLEFT", 0, 5)
+					DruidManaBackground:Size(C["unitframes"].plw, C["unitframes"].ph)
 					DruidManaBackground:SetFrameLevel(8)
 					DruidManaBackground:SetFrameStrata("MEDIUM")
 					DruidManaBackground:SetTemplate("Default")
 					DruidManaBackground:SetBackdropBorderColor(0,0,0,0)
+					DruidManaBackground:AddBorder()
 					
 					local DruidManaBarStatus = CreateFrame('StatusBar', nil, DruidManaBackground)
 					DruidManaBarStatus:SetPoint('LEFT', DruidManaBackground, 'LEFT', 0, 0)
@@ -380,11 +377,7 @@ local function Shared(self, unit)
 					-- ECLIPSE BAR
 					local eclipseBar = CreateFrame('Frame', nil, self)
 					eclipseBar:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 1)
-					if T.lowversion then
-						eclipseBar:Size(186, 8)
-					else
-						eclipseBar:Size(250, 8)
-					end
+					eclipseBar:Size(C["unitframes"].plw, C["unitframes"].ph)
 					eclipseBar:SetFrameStrata("MEDIUM")
 					eclipseBar:SetFrameLevel(8)
 					eclipseBar:SetTemplate("Default")
@@ -407,8 +400,7 @@ local function Shared(self, unit)
 					eclipseBar.SolarBar = solarBar
 
 					local eclipseBarText = eclipseBar:CreateFontString(nil, 'OVERLAY')
-					eclipseBarText:SetPoint('TOP', panel)
-					eclipseBarText:SetPoint('BOTTOM', panel)
+					eclipseBarText:SetPoint('TOPRIGHT', self.Health, "TOPRIGHT", -2, -2)
 					eclipseBarText:SetFont(font1, 12)
 					eclipseBar.PostUpdatePower = T.EclipseDirection
 					
@@ -424,19 +416,15 @@ local function Shared(self, unit)
 					self.shadow:Point("TOPLEFT", -4, 11)
 		
 					local bars = CreateFrame("Frame", nil, self)
-					bars:SetPoint("BOTTOMLEFT", self, "TOPLEFT", -3, 4)
-					if T.lowversion then
-						bars:Width(186)
-					else
-						bars:Width(250)
-					end
-					bars:Height(8)
+					bars:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 5)
+					bars:Width(C["unitframes"].plw)
+					bars:Height(C["unitframes"].ph)
 					bars:SetTemplate("Default")
 					bars:SetBackdropBorderColor(0,0,0,0)
 					
 					for i = 1, 3 do					
 						bars[i]=CreateFrame("StatusBar", self:GetName().."_Shard"..i, self)
-						bars[i]:Height(8)					
+						bars[i]:Height(C["unitframes"].ph)					
 						bars[i]:SetStatusBarTexture(normTex)
 						bars[i]:GetStatusBarTexture():SetHorizTile(false)
 
@@ -452,19 +440,11 @@ local function Shared(self, unit)
 						
 						if i == 1 then
 							bars[i]:SetPoint("LEFT", bars)
-							if T.lowversion then
-								bars[i]:Width(62)
-							else
-								bars[i]:Width(82) -- setting SetWidth here just to fit fit 250 perfectly
-							end
+							bars[i]:Width(C["unitframes"].plw/3-2)
 							bars[i].bg:SetAllPoints(bars[i])
 						else
 							bars[i]:Point("LEFT", bars[i-1], "RIGHT", 1, 0)
-							if T.lowversion then
-								bars[i]:Width(61)
-							else
-								bars[i]:Width(83) -- setting SetWidth here just to fit fit 250 perfectly
-							end
+							bars[i]:Width(C["unitframes"].plw/3-1)
 							bars[i].bg:SetAllPoints(bars[i])
 						end
 						
@@ -487,34 +467,22 @@ local function Shared(self, unit)
 					self.shadow:Point("TOPLEFT", -4, 12)
 					
 					local Runes = CreateFrame("Frame", nil, self)
-					Runes:Point("BOTTOMLEFT", self, "TOPLEFT", 0,1)
-					Runes:Height(8)
-					if T.lowversion then
-						Runes:SetWidth(186)
-					else
-						Runes:SetWidth(250)
-					end
+					Runes:Point("BOTTOMLEFT", self.Health, "TOPLEFT", 0,5)
+					Runes:Height(C["unitframes"].ph)
+					Runes:SetWidth(C["unitframes"].plw-1)
 					Runes:SetBackdrop(backdrop)
 					Runes:SetBackdropColor(0, 0, 0)
 
 					for i = 1, 6 do
 						Runes[i] = CreateFrame("StatusBar", self:GetName().."_Runes"..i, health)
-						Runes[i]:SetHeight(8)
-						if T.lowversion then
-							if i == 1 then
-								Runes[i]:SetWidth(31)
-							else
-								Runes[i]:SetWidth(30)
-							end
+						Runes[i]:SetHeight(C["unitframes"].ph)
+						if i == 1 then
+							Runes[i]:SetWidth(C["unitframes"].plw/6-2)
 						else
-							if i == 1 then
-								Runes[i]:SetWidth(40)
-							else
-								Runes[i]:SetWidth(41)
-							end
+							Runes[i]:SetWidth(C["unitframes"].plw/6-1)
 						end
 						if (i == 1) then
-							Runes[i]:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 1)
+							Runes[i]:Point("TOPLEFT", Runes, "TOPLEFT", 0, 0)
 						else
 							Runes[i]:Point("TOPLEFT", Runes[i-1], "TOPRIGHT", 1, 0)
 						end
@@ -532,6 +500,7 @@ local function Shared(self, unit)
 					
 					local TotemBar = {}
 					TotemBar.Destroy = true
+					local w = C["unitframes"].plw/4-1
 					for i = 1, 4 do
 						TotemBar[i] = CreateFrame("StatusBar", self:GetName().."_TotemBar"..i, self)
 						-- a totem 'slot' in the default ui doesn't necessarily correspond to its place on the screen.
@@ -539,31 +508,17 @@ local function Shared(self, unit)
 						-- slot id is two according to Blizzard default slotID!
 						-- we want to match action bar so we fix them by moving status bar around.
 						local fixme
-						if (i == 2) then
-							TotemBar[i]:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 1)
-						elseif i == 1 then
-							fixme = 62
-							if T.lowversion then fixme = 46 end
-							TotemBar[i]:Point("BOTTOMLEFT", self, "TOPLEFT", fixme + 1, 1)
+						if i == 1 then
+							TotemBar[i]:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 5)
 						else
-							fixme = i
-							if i == 3 then fixme = i-1 end
-							TotemBar[i]:Point("TOPLEFT", TotemBar[fixme-1], "TOPRIGHT", 1, 0)
+							TotemBar[i]:Point("LEFT", TotemBar[i-1], "RIGHT", 1, 0)
 						end
 						TotemBar[i]:SetStatusBarTexture(normTex)
-						TotemBar[i]:Height(8)
-						if T.lowversion then
-							if i == 1 then
-								TotemBar[i]:SetWidth(45)
-							else
-								TotemBar[i]:SetWidth(46)
-							end
+						TotemBar[i]:Height(C["unitframes"].ph)
+						if i == 1 then
+							TotemBar[i]:SetWidth(w-1)
 						else
-							if i == 4 then
-								TotemBar[i]:SetWidth(61)
-							else
-								TotemBar[i]:SetWidth(62)
-							end
+							TotemBar[i]:SetWidth(w)
 						end
 						TotemBar[i]:SetBackdrop(backdrop)
 						TotemBar[i]:SetBackdropColor(0, 0, 0)
@@ -646,7 +601,7 @@ local function Shared(self, unit)
 			local buffs = CreateFrame("Frame", "Buffs", self)
 			local debuffs = CreateFrame("Frame", "Debuffs", self)
 			
-			buffs:SetPoint("BOTTOMLEFT", self.Health, "TOPLEFT", 0, 2)
+			buffs:SetPoint("BOTTOMLEFT", self.Health, "TOPLEFT", 0, 5)
 			buffs:SetHeight(21.5)
 			buffs:SetWidth(186)
 			buffs.size = 21.5
